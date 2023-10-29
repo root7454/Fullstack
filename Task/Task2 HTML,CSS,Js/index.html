@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Task2</title>
+</head>
+<style>
+	body{
+		background-color: black;
+		font-family:monospace;
+	}
+	h1{
+		text-align: center;
+		font-weight: 700;
+
+	}
+	.information{
+		background-color: #6779c3;
+		border: 1px solid #6da3e3;
+		margin: 15%;
+		border-radius: 10px;
+		padding: 20px;
+
+	}
+	.fieldset1{
+		padding: 20px;
+		font-size:x-large;
+		border: 1px solid #6da3e3;      
+		border-radius: 5px;
+
+	}
+	.fieldset2{
+		padding: 10px;
+		font-size:x-large;
+		border: 1px solid #6da3e3;      
+		border-radius: 5px;
+	}
+	.fieldset1 label{
+		padding-bottom: 10px;
+	}
+	.input-fields {
+		padding-bottom: 10px;
+	}
+	.fieldset1 input{
+		padding: 3px;
+		margin-left:5px;
+		padding-left: 15px;
+		border: 1px solid rgb(195, 171, 171);
+		border-radius: 5px;
+	}
+	#messageInput{
+		border: 1px;
+		width: 97%;
+		border-radius: 5px;     
+		padding: 10px;
+
+	}
+	.btn{
+		margin: 10px;
+		display: flex;
+		justify-content: center;
+
+	}
+	.btn button{
+		width: 80px;
+		height: 30px;  
+		border: 1px;
+		background-color: green;
+		border-radius:5px;
+	}
+</style>
+<body>
+
+	<div class="information">
+
+		<h1>Beginner Survey Form</h1>
+
+		<fieldset class="fieldset1">
+
+			<legend>Personal Details</legend>
+
+			<div class="input-fields">
+				<label>Name: </label>
+				<input id="name" type="text" placeholder="Enter your name" ><br>
+				<p id="display_name"></p>
+			</div>
+
+			<div class="input-fields">
+				<label>Address: </label>
+				<input id="add" type="text" placeholder="Enter your Address"><br>
+				<p id="display_add"></p>
+			</div>
+
+			<div class="input-fields">
+				<label>Email: </label>
+				<input id="email" type="email" placeholder="Enter your Email"><br>
+				<p id="display_email"></p>
+			</div>
+
+			<div class="input-fields">
+				<label>Number: </label>
+				<input id="phone" type="phone" placeholder="Enter your Number"><br>
+				<p id="display_phone"></p>
+			</div>
+
+			<div>
+				<label>Please select your gender: </label><br>
+				<div>
+					<input id="male" type="radio" id="lable" name="select Gender" value="Male">
+					<lable >Male</lable><br>
+                    <p id="display_male"></p>
+				</div>
+				<div>
+					<input id="female" type="radio" name="select Gender" value="Female">
+					<lable >Female</lable><br>
+                    <p id="display_female"></p>
+				</div>
+				<div>
+					<input id="non-bin" type="radio" name="select Gender" value="Non-binary">
+					<lable >Non-binary</lable><br>
+                    <p id="display_non-bin"></p>
+				</div>
+				<div>
+					<input id="prefer" type="radio" name="select Gender" value="Prefer not to say">
+					<lable >Prefer not to say</lable><br> 
+                    <p id="display_prefer"></p>
+				</div>
+			</div>
+		</fieldset>
+		<fieldset class="fieldset2">
+			<legend>Additional Information</legend> 
+			<label>Enter Your Background Information</label>
+            <span style="padding-left: 10px;" id="charCount">0</span><br> 
+			<textarea matInput rows="6" cols="40" id="messageInput" placeholder="Enter Your Background Information"></textarea><br> 
+		</fieldset>
+
+		<div class="btn">
+			<button onclick="myfun()">Submit</button>
+		</div>
+
+	</div>
+
+
+	<script type="text/javascript">
+			
+        const messageInput = document.getElementById("messageInput");
+        const CountElement = document.getElementById("charCount");
+
+        messageInput.addEventListener("input", function() {
+            const message = messageInput.value;
+            const charCount = message.length;
+            CountElement.textContent = charCount;
+        });
+
+		function myfun(){
+			const name_value = document.getElementById('name').value;
+			const add_value = document.getElementById('add').value;
+			const email_value = document.getElementById('email').value;
+			const phone_value = document.getElementById('phone').value;
+
+
+            const male_value = document.getElementById('male').value;
+			const female_value = document.getElementById('female').value;
+			const non_value = document.getElementById('non-bin').value;
+			const prefer_value = document.getElementById('prefer').value;
+
+            const name = document.getElementById('name')
+            
+            const display = document.getElementById("display_name");
+            const display1 = document.getElementById("display_add");
+            const display2 = document.getElementById("display_email");
+            const display3 = document.getElementById("display_phone");
+
+            const display4 = document.getElementById("display_male");
+            const display5 = document.getElementById("display_female");
+            const display6 = document.getElementById("display_non-bin");
+            const display7 = document.getElementById("display_prefer");
+
+const selectedOption = document.querySelector("input[name='option']:checked");    
+    
+			if (name_value == "" ) {
+				display.textContent = "Error: Input cannot be empty.";
+				display.style.color = "red";
+                name.style.border ="3px solid red"              
+			}
+
+           else{
+                display.textContent = name_value; 
+                display.style.color = "black";
+                name.style.border ="1px solid rgb(195, 171, 171)"          
+           }
+
+           if (add_value == "" ) {
+            display1.textContent = "Error: Input cannot be empty.";
+            display1.style.color = "red";
+            add.style.border ="3px solid red"              
+            }
+
+            else{
+                display1.textContent = name_value; 
+                display1.style.color = "black";
+                add.style.border ="1px solid rgb(195, 171, 171)"          
+            }
+            if (email_value == "" ) {
+                display2.textContent = "Error: Input cannot be empty.";
+                display2.style.color = "red";
+                email.style.border ="3px solid red"              
+                }
+    
+            else{
+                    display2.textContent = email_value; 
+                    display2.style.color = "black";
+                    email.style.border ="1px solid rgb(195, 171, 171)"          
+                }
+
+            if (phone_value == "" ) {
+                    display3.textContent = "Error: Input cannot be empty.";
+                    display3.style.color = "red";
+                    phone.style.border ="3px solid red"              
+                    }
+        
+            else{
+                    display3.textContent = phone_value; 
+                    display3.style.color = "black";
+                    phone.style.border ="1px solid rgb(195, 171, 171)"          
+                }
+              
+
+		}
+	</script>
+</body>
+</html>

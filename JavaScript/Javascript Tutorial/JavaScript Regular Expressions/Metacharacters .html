@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript Regular Expressions</h2>
+
+<p>Do a global search for digits in a string:</p>
+
+<p id="demo"></p>
+<p>Do a global search for whitespace characters in a string:</p>
+<p id="demo1"></p>
+<p>Search for the characters "LO" in the <b>beginning</b> of a word in the phrase:</p>
+<p>"HELLO, LOOK AT YOU!"</p>
+<p id="demo2"></p>
+<p>Do a global search for the hexadecimal number 0057 (W) in a string:</p>
+<p id="demo3"></p>
+
+
+<script>
+let text = "Give 100%!"; 
+let result = text.match(/\d/g);
+document.getElementById("demo").innerHTML = result;
+
+let text1 = "Is this all there is?";
+let result1 = text1.match(/\s/g);
+document.getElementById("demo1").innerHTML = result1;
+
+let text2 = "HELLO, LOOK AT YOU!"; 
+let result2 = text2.search(/\bLO/);
+document.getElementById("demo2").innerHTML = result2;
+
+let text3 = "Visit W3Schools. Hello World!"; 
+let result3 = text3.match(/\u0057/g);
+document.getElementById("demo3").innerHTML = result3;
+
+</script>
+
+</body>
+</html>

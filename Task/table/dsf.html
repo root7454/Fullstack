@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fetching Images with jQuery AJAX</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+
+<div id="imagesContainer"></div>
+
+<script>
+$(document).ready(function() {
+    var urlToScrape = 'https://www.flipkart.com/poco-c51-locked-airtel-prepaid-royal-blue-64-gb/p/itm795e693024fbb?pid=MOBGQTDP5DGSNS7Q&lid=LSTMOBGQTDP5DGSNS7QYVHTJC&marketplace=FLIPKART&fm=neo%2Fmerchandising&iid=M_2ab838cf-e50e-4c5e-8a2a-87c1c229b7e8_63_SRKS9OGSRSRY_MC.MOBGQTDP5DGSNS7Q&ppt=clp&ppn=mobile-phones-store&ssid=nwb8safd0w0000001693416062072&otracker=clp_pmu_v2_Under%2B%2B%25E2%2582%25B910%252C000_1_63.productCard.PMU_V2_POCO%2BC51%2B-%2BLocked%2Bwith%2BAirtel%2BPrepaid%2B%2528Royal%2BBlue%252C%2B64%2BGB%2529_mobile-phones-store_MOBGQTDP5DGSNS7Q_neo%2Fmerchandising_0&otracker1=clp_pmu_v2_PINNED_neo%2Fmerchandising_Under%2B%2B%25E2%2582%25B910%252C000_LIST_productCard_cc_1_NA_view-all&cid=MOBGQTDP5DGSNS7Q'; // Replace with the URL you want to scrape
+
+    $.ajax({
+        url: urlToScrape,
+        method: 'GET',
+        success: function(response) {
+            var imageUrls = [];
+            
+            // Parse the response to extract image URLs
+            $(response).find('.q6DClP').each(function() {
+                var imageUrl = $(this).attr('src');
+                if (imageUrl) {
+                    imageUrls.push(imageUrl);
+                }
+            });
+
+            // Display the image URLs
+            var imagesContainer = $('#imagesContainer');
+            imageUrls.forEach(function(imageUrl) {
+                imagesContainer.append('<img src="' + imageUrl + '">');
+            });
+        },
+        error: function(xhr, status, error) {
+            console.log('Error:', error);
+        }
+    });
+});
+</script>
+
+</body>
+</html>

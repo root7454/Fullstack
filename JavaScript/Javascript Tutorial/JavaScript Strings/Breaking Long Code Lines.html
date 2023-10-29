@@ -1,0 +1,31 @@
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>JavaScript Strings</h1>
+
+<p>
+You can break a code line within a text string with a backslash.
+</p>
+
+<p id="demo"></p>
+<p id="demo1"></p>
+<p id="demo2"></p>
+
+
+<script>
+document.getElementById("demo").innerHTML = "Hello \
+Dolly!";
+//A safer way to break up a string, is to use string addition:
+document.getElementById("demo1").innerHTML = "Hello " +
+"Dolly!";
+//You cannot break up a code line with a backslash:
+
+//document.getElementById("demo2").innerHTML = \"Hello Dolly.";
+
+
+</script>
+
+</body>
+</html>

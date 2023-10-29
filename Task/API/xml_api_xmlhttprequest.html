@@ -1,0 +1,29 @@
+<html>
+
+<body>
+    <h1 id="name"></h1>
+    <h3 id="email"></h3>
+    <button onclick="load()">load</button>
+</body>
+<script>
+    let xhr = new XMLHttpRequest();
+    function load() {
+        let response;
+        xhr.onreadystatechange = function () {
+
+            if (this.status == 200 && this.readyState == 4) {
+                response = this.responseXML;
+                document.getElementById('name').innerHTML = (response.getElementsByTagName("name")[0].childNodes[0].nodeValue);
+                document.getElementById('email').innerHTML = (response.getElementsByTagName("email")[0].childNodes[0].nodeValue);
+            }
+
+        }
+        xhr.open("GET", "http://restapi.adequateshop.com/api/Traveler", true);
+        xhr.send();
+    }
+
+
+
+</script>
+
+</html>

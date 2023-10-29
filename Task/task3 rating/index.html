@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Star Rating System with jQuery</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        .rating-container {
+            text-align: center;
+            margin-top: 50px;
+        }
+        .rating-star {
+            font-size: 24px;
+            cursor: pointer;
+            color: gray;
+        }
+        .active-star {
+            color: gold;
+        }
+        .thank-you-message {
+            display: none;
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="rating-container">
+        <i class="rating-star fas fa-star" data-rating="1"></i>
+        <i class="rating-star fas fa-star" data-rating="2"></i>
+        <i class="rating-star fas fa-star" data-rating="3"></i>
+        <i class="rating-star fas fa-star" data-rating="4"></i>
+        <i class="rating-star fas fa-star" data-rating="5"></i>
+    </div>
+    <div class="thank-you-message">
+        <h3>Thank you for rating with <span class="rating-number"></span> stars! </h3>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            let userRating = 0;
+
+            $(".rating-star").click(function() {
+                userRating = parseInt($(this).data("rating"));
+                for (let i = 1; i <= userRating; i++) {
+                    $(".rating-star[data-rating='" + i + "']").addClass("active-star");
+                }
+				$(".thank-you-message").show();
+                $(".rating-number").text(userRating);
+                
+
+                setTimeout(function() {
+                    $(".rating-star").removeClass("active-star");
+                    $(".thank-you-message").hide();
+                }, 2000);
+            });
+        });
+    </script>
+</body>
+</html>

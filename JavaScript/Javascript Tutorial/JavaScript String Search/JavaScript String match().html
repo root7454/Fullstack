@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>JavaScript Strings</h1>
+<h2>The match() Method</h2>
+
+<p>Perform a search for "ain":</p>
+
+<p id="demo"></p>
+<p id="demo1"></p>
+<p id="demo2"></p>
+
+<script>
+let text = "The rain in SPAIN stays mainly in the plain";
+const myArr = text.match("ain");
+document.getElementById("demo").innerHTML = myArr.length + " " + myArr;
+
+let text1 = "The rain in SPAIN stays mainly in the plain"; 
+const myArr1 = text.match(/ain/g);
+document.getElementById("demo1").innerHTML = myArr1.length + " " + myArr1;
+
+
+let text2 = "The rain in SPAIN stays mainly in the plain"; 
+const myArr2 = text.match(/ain/gi);
+document.getElementById("demo2").innerHTML = myArr1.length + " " + myArr2;
+</script>
+
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Age Calculator</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <h1>Age Calculator</h1>
+    <label for="birthdate">Enter your birthdate:</label>
+    <input type="date" id="birthdate">
+    <button id="calculate">Calculate Age</button>
+
+    <div id="result"></div>
+
+    <script>
+        $(document).ready(function() {
+            $('#calculate').click(function() {
+                var birthdate = new Date($('#birthdate').val());
+                var now = new Date();
+
+                var diff = now - birthdate;
+                var years =  Math.floor(diff / (365.25 * 24 * 60 * 60 * 1000));
+
+                var months = Math.floor((diff % (365.25 * 24 * 60 * 60 * 1000)) / (30.44 * 24 * 60 * 60 * 1000));
+
+                var weeks = Math.floor(diff / (7 * 24 * 60 * 60 * 1000));
+
+                var days = Math.floor(diff / (24 * 60 * 60 * 1000));
+
+                var hours = Math.floor(diff / (60 * 60 * 1000));
+
+                var minutes = Math.floor(diff / (60 * 1000));
+
+                var seconds = Math.floor(diff / (1000));
+
+                $('#result').html(
+                    'Age: ' + years + ' years, ' + months + ' months, ' + weeks + ' weeks, ' +
+                    days + ' days, ' + hours + ' hours, ' + minutes + ' minutes, ' + seconds + ' seconds.'
+                );
+            });
+        });
+    </script>
+</body>
+</html>

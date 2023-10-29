@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    </head>
+    <script>
+        $(document).ready(function(){
+            $('button').mouseover(function()
+            {
+                $('p').hide();
+
+            });
+            $('button').mouseout(function(){
+
+                $('p').show();
+            })
+        });
+    </script>
+    <body>
+        <h1>JQuery</h1>
+        <p>this is paragraph-1</p>
+        <p>this is paragraph-2</p>
+        <button>hide P</button>
+    </body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bootstrap Site</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
+
+</head>
+<style>
+    .reset {
+        all: revert;
+        
+        
+    }
+    #border{
+        border: 1px solid #6da3e3;
+    }
+	body{
+        font-family:monospace;
+    }
+    
+</style>
+<body class="bg-primary">
+    <div id="border" style="background-color: #6e81cb; margin-top:10%; border-radius:10px;" class="container">
+
+		<h1 class="text-center mt-2"><strong>Beginner Survey Form</strong> </h1>
+
+		<fieldset id="border" class="reset rounded"  style="font-size:xx-large;">
+
+			<legend class="reset "><b>Personal Details</b></legend>
+
+			<div class="mt-2 mb-2">
+				<label class="mr-3"><b>Name: </b></label>
+				<input  style="font-size:large;" class="rounded border pl-4" type="text" placeholder="Enter your name" ><br>
+
+			</div>
+
+			<div class="mt-2 mb-2">
+				<label class="mr-3"><b>Address: </b></label>
+				<input style="font-size:large;" class="rounded border pl-4" type="text" placeholder="Enter your Address"><br>
+
+			</div>
+
+			<div class="mt-2 mb-2">
+				<label class="mr-3"><b>Email: </b></label>
+				<input style="font-size:large;" class="rounded border pl-4" type="email" placeholder="Enter your Email"><br>
+			</div>
+
+			<div class="mt-2 mb-2">
+				<label class="mr-3"><b>Number: </b></label>
+				<input style="font-size:large;" class="rounded border pl-4" type="phone" placeholder="Enter your Number"><br>
+			</div>
+
+			<div>
+				<label><b>Please select your gender: </b></label><br>
+				<div>
+					<input id="male" type="radio"  name="select Gender" value="Male">
+					<lable><b>Male</b></lable><br>
+				</div>
+				<div>
+					<input  id="female" type="radio" name="select Gender" value="Female">
+					<lable ><b>Female</b></lable><br>
+
+				</div>
+				<div>
+					<input id="non-bin" type="radio" name="select Gender" value="Non-binary">
+					<lable ><b>Non-binary</b></lable><br>
+
+				</div>
+				<div>
+					<input id="prefer" type="radio" name="select Gender" value="Prefer not to say">
+					<lable ><b>Prefer not to say</b></lable><br> 
+				</div>
+			</div>
+			<b>
+		</fieldset>
+		<fieldset id="border" class=" rounded reset"style="font-size:xx-large;">
+			<legend class=" reset">Additional Information</legend> 
+			<label >Enter Your Background Information</label> <br>
+			<textarea style="font-size:x-large;" class="rounded border p-2" matInput rows="4" cols="55" id="messageInput" placeholder="Enter Your Background Information"></textarea><br> 
+		</fieldset>
+	</b>
+		<div class="text-center m-2">
+			<button class="rounded border " onclick="myfun()">Submit</button>
+		</div>
+
+	</div>
+
+</body>
+
+</html>

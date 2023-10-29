@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<title>Task2</title>
+</head>
+
+<body>
+
+	<div class="information">
+
+		<h1>Beginner Survey Form</h1>
+		<form id="validationForm">
+			<fieldset class="fieldset1">
+
+				<legend>Personal Details</legend>
+
+				<div class="input-fields">
+					<label>Name: </label>
+					<input id="name" type="text" placeholder="Enter your name"><br>
+					<p id="nameError" class="error"></p>
+				</div>
+
+				<div class="input-fields">
+					<label>Email: </label>
+					<input id="email" type="email" placeholder="Enter your Email"><br>
+					<p id="emailError" class="error"></p>
+				</div>
+
+				<div class="input-fields">
+					<label>Number: </label>
+					<input id="phone" type="phone" placeholder="Enter your Number"><br>
+					<p id="phoneNumberError" class="error"></p>
+				</div>
+			</fieldset>
+
+			<div class="btn">
+				<button type="submit" id="btn">Submit</button>
+			</div>
+		</form>
+
+	</div>
+
+	<script>
+		$(document).ready(function () {
+			$("#validationForm").submit(function (event) {
+				let isValid = true;
+
+				if (!validateName($("#name").val())) {
+					$("#nameError").text("Please enter a valid name.");
+					isValid = false;
+				} else {
+					$("#nameError").text("");
+				}
+
+				if (!validatePhoneNumber($("#phone").val())) {
+					$("#phoneNumberError").text("Please enter a valid 10-digit phone number.");
+					isValid = false;
+				} else {
+					$("#phoneNumberError").text("");
+				}
+
+				if (!validateEmail($("#email").val())) {
+					$("#emailError").text("Please enter a valid email address.");
+					isValid = false;
+				} else {
+					$("#emailError").text("");
+				}
+
+				if (!isValid) {
+					event.preventDefault();
+				}
+			});
+
+			function validateName(name) {
+				const namePattern = /^[A-Za-z\s]+$/;
+				return namePattern.test(name);
+			}
+
+			function validatePhoneNumber(phoneNumber) {
+				const phonePattern = /^\d{10}$/;
+				return phonePattern.test(phoneNumber);
+			}
+
+			function validateEmail(email) {
+				const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+				return emailPattern.test(email);
+			}
+		});
+	</script>
+	<style>
+		.error {
+			color: red;
+			font-size: 12px;
+		}
+
+
+		body {
+			background-color: black;
+			font-family: monospace;
+		}
+
+		h1 {
+			text-align: center;
+			font-weight: 700;
+
+		}
+
+		.information {
+			background-color: #6779c3;
+			border: 1px solid #6da3e3;
+			margin: 15%;
+			border-radius: 10px;
+			padding: 20px;
+
+		}
+
+		.fieldset1 {
+			padding: 20px;
+			font-size: x-large;
+			border: 1px solid #6da3e3;
+			border-radius: 5px;
+
+		}
+
+		.fieldset2 {
+			padding: 10px;
+			font-size: x-large;
+			border: 1px solid #6da3e3;
+			border-radius: 5px;
+		}
+
+		.fieldset1 label {
+			padding-bottom: 10px;
+		}
+
+		.input-fields {
+			padding-bottom: 10px;
+		}
+
+		.fieldset1 input {
+			padding: 3px;
+			margin-left: 5px;
+			padding-left: 15px;
+			border: 1px solid rgb(195, 171, 171);
+			border-radius: 5px;
+		}
+
+		#messageInput {
+			border: 1px;
+			width: 97%;
+			border-radius: 5px;
+			padding: 10px;
+
+		}
+
+		.btn {
+			margin: 10px;
+			display: flex;
+			justify-content: center;
+
+		}
+
+		.btn button {
+			width: 80px;
+			height: 30px;
+			border: 1px;
+			background-color: green;
+			border-radius: 5px;
+		}
+	</style>
+</body>
+
+</html>

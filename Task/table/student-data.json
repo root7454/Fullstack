@@ -1,0 +1,122 @@
+[
+    {
+      "id": 1,
+      "name": "John Smith",
+      "age": 20,
+      "grade": "A"
+    },
+    {
+      "id": 2,
+      "name": "Jane Doe",
+      "age": 19,
+      "grade": "B"
+    },
+    {
+      "id": 3,
+      "name": "Michael Johnson",
+      "age": 21,
+      "grade": "A"
+    },
+    {
+      "id": 4,
+      "name": "Emily Williams",
+      "age": 22,
+      "grade": "B"
+    },
+    {
+      "id": 5,
+      "name": "David Brown",
+      "age": 20,
+      "grade": "C"
+    },
+    {
+      "id": 6,
+      "name": "Sophia Davis",
+      "age": 21,
+      "grade": "A"
+    },
+    {
+      "id": 7,
+      "name": "Liam Anderson",
+      "age": 19,
+      "grade": "B"
+    },
+    {
+      "id": 8,
+      "name": "Olivia Martinez",
+      "age": 20,
+      "grade": "A"
+    },
+    {
+      "id": 9,
+      "name": "Noah Wilson",
+      "age": 22,
+      "grade": "B"
+    },
+    {
+      "id": 10,
+      "name": "Emma Thompson",
+      "age": 19,
+      "grade": "C"
+    },
+    {
+      "id": 11,
+      "name": "William Taylor",
+      "age": 21,
+      "grade": "A"
+    },
+    {
+      "id": 12,
+      "name": "Ava Lee",
+      "age": 20,
+      "grade": "B"
+    },
+    {
+      "id": 13,
+      "name": "James Clark",
+      "age": 22,
+      "grade": "A"
+    },
+    {
+      "id": 14,
+      "name": "Isabella White",
+      "age": 19,
+      "grade": "C"
+    },
+    {
+      "id": 15,
+      "name": "Benjamin Hall",
+      "age": 21,
+      "grade": "B"
+    },
+    {
+      "id": 16,
+      "name": "Mia Lewis",
+      "age": 20,
+      "grade": "A"
+    },
+    {
+      "id": 17,
+      "name": "Ethan Turner",
+      "age": 19,
+      "grade": "B"
+    },
+    {
+      "id": 18,
+      "name": "Amelia Jackson",
+      "age": 21,
+      "grade": "C"
+    },
+    {
+      "id": 19,
+      "name": "Alexander Harris",
+      "age": 22,
+      "grade": "A"
+    },
+    {
+      "id": 20,
+      "name": "Charlotte Martin",
+      "age": 20,
+      "grade": "B"
+    }
+  ]

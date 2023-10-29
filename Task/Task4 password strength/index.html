@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Password Strength Checker</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        .password-strength {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <label for="password">Enter Password:</label>
+    <input type="password" id="password" />
+
+    <div class="password-strength">
+        Password Strength: <span id="strength">Weak</span>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            $("#password").keyup(function() {
+                const password = $(this).val();
+                const strengthIndicator = $("#strength");
+
+                const minLength = 8;
+
+                const lowercase = /[a-z]/;
+                const Uppercase = /[A-Z]/;
+                const Numbers = /[0-9]/;
+                const SpecialChars = /[!@#$%^&*()_+{}\[\]:;<>,.?~\\/-]/;
+
+                let strength = "Weak";
+
+                if (password.length >= minLength) {
+                    if (lowercase.test(password) &&
+                        Uppercase.test(password) &&
+                        Numbers.test(password) &&
+                        SpecialChars.test(password)) {
+                        strength = "Strong";
+                    } else if (lowercase.test(password) &&
+                               Uppercase.test(password) &&
+                               Numbers.test(password)) {
+                        strength = "Moderate";
+                    }
+                }
+
+                strengthIndicator.text(strength);
+            });
+        });
+    </script>
+</body>
+</html>

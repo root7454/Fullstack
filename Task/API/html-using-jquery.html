@@ -1,0 +1,31 @@
+<html>
+    <body>
+        <div class="display"></div>
+        <button id="btn">display</button>
+
+    </body>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        <script>
+            $('#btn').click(function() {
+                $.ajax({
+                url: "temp-mail.org",
+                data: {
+                    txtsearch: $('#data').val()
+                },
+                type: "GET",
+                dataType : "html",
+                success: function( data ) {
+                    var result = $('<div />').append(data).find('#display').html();
+                    $('#display').html(result);
+                },
+                error: function( xhr, status ) {
+                alert( "Sorry, there was a problem!" );
+                },
+                complete: function( xhr, status ) {
+                    //$('#showresults').slideDown('slow')
+                }
+                });
+            });
+        </script>
+
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h1>JavaScript Arrays</h1>
+
+<p id="demo"></p>
+<p id="demo1"></p>
+<p id="demo2"></p>
+<p id="demo3"></p>
+<p id="demo4"></p>
+
+<script>
+const cars = ["Saab", "Volvo", "BMW"];
+document.getElementById("demo").innerHTML = cars;
+
+const car = [];
+car[0]= "Saab";
+car[1]= "Volvo";
+car[2]= "BMW";
+document.getElementById("demo1").innerHTML = car;
+
+
+const carss = new Array("Saab", "Volvo", "BMW");
+document.getElementById("demo2").innerHTML = carss;
+
+
+const cars3 = ["Saab", "Volvo", "BMW"];
+document.getElementById("demo3").innerHTML = cars3[0];
+
+
+const cars4 = ["Saab", "Volvo", "BMW"];
+cars4[0] = "Opel";
+document.getElementById("demo4").innerHTML = cars4;
+</script>
+
+</body>
+</html>
+

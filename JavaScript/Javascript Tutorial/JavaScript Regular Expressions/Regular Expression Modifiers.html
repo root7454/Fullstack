@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript Regular Expressions</h2>
+
+<p>Do a case-insensitive search for "w3schools" in a string:</p>
+
+<p id="demo"></p>
+<p id="demo1"></p>
+<p id="demo2"></p>
+
+<script>
+let text = "Visit W3Schools";
+let result = text.match(/w3schools/i);
+document.getElementById("demo").innerHTML = result;
+
+let text1 = "Is this all there is?";
+let result1 = text1.match(/is/g);
+document.getElementById("demo1").innerHTML = result1; 
+
+let text2 = "\nIs th\nis it?";
+let result2 = text2.match(/^is/m);
+document.getElementById("demo2").innerHTML = "Result is: " + result2;
+</script>
+
+</body>
+</html>

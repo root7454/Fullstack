@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/jquery.devbridge-autocomplete/1.2.27/jquery.autocomplete.min.js"></script>
+    <style>
+        .autocomplete-suggestion {
+            background-color: #fff;
+            /* Set the background color for suggestions */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="well">
+        <div class="row">
+            <form class="form-inline">
+                <div class="form-group col-sm-5">
+                    <label class="form-label">Select User</label>
+                    <input type="text" class="form-control" name="country" id="autocomplete" />
+                    <p id="error-message" style="color: red; display: none;">User not in select options.</p>
+                </div>
+            </form>
+        </div>
+        <div>
+            ths option is selected: <span id="demo" type="text"></span>
+        </div>
+    </div>
+</body>
+<script>
+    $(document).ready(function () {
+        var arrayReturn = [];
+        $.ajax({
+            url: "http://jsonplaceholder.typicode.com/users",
+            async: true,
+            dataType: 'json',
+            success: function (data) {
+                for (var i = 0, len = data.length; i < len; i++) {
+                    var id = (data[i].id).toString();
+                    arrayReturn.push({ 'value': data[i].name, 'data': id });
+                }
+                loadSuggestions(arrayReturn);
+            }
+        });
+
+        function loadSuggestions(options) {
+            $('#autocomplete').autocomplete({
+                lookup: options,
+                onSelect: function (suggestion) {
+                    $('#error-message').hide();
+                    $('#demo').html(suggestion.value);
+                },
+            });
+
+            $('#autocomplete').on('input', function () {
+                var inputVal = $(this).val();
+                var matchingOption = options.find(option => option.value === inputVal);
+
+                if (!matchingOption) {
+                    $('#error-message').show();
+                } else {
+                    $('#error-message').hide();
+                }
+            });
+
+        }
+    });
+</script>
+
+</html>

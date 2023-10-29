@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>JavaScript String Methods</h1>
+<p>Replace "Microsoft" with "myProfile" in the paragraph below:</p>
+
+<button onclick="myFunction()">replace</button>
+<p id="demo">Please visit Microsoft and Microsoft! and Microsoft</p>
+
+<p>use /i to replace insensitive</p>
+<button onclick="myFunction1()">replace</button>
+<p id="demo1">Please visit Microsoft and MICROSOFT! and Microsoft</p>
+
+<script>
+function myFunction() {
+  let text = document.getElementById("demo").innerHTML; 
+  document.getElementById("demo").innerHTML = text.replace("Microsoft","myProfile");
+}
+
+function myFunction1() {
+  let text = document.getElementById("demo1").innerHTML; 
+  document.getElementById("demo1").innerHTML = text.replace(/MICROSOFT/i,"myProfile");
+}
+
+</script>
+
+</body>
+</html>
+
+
+
+

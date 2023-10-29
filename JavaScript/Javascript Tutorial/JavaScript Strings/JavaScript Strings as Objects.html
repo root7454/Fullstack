@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>JavaScript Strings</h1>
+
+<p id="demo"></p>
+<p id="demo1"></p>
+<p id="demo2"></p>
+<p id="demo3"></p>
+<p id="demo4"></p>
+
+<script>
+// x is a string
+let x = "John";
+
+// y is an object
+let y = new String("John");
+
+document.getElementById("demo").innerHTML =
+typeof x + "<br>" + typeof y;
+
+//When using the == operator, x and y are equal:
+let a = "John";        // a is a string
+let b = new String("John");  // b is an object
+document.getElementById("demo1").innerHTML = (x==y);
+
+//When using the === operator, x and y are not equal:
+
+let c = "John";        // c is a string
+let d = new String("John");  // d is an object
+document.getElementById("demo2").innerHTML = (x===y);
+
+//(x == y) true or false?
+let e = new String("John");  // e is an object
+let f = new String("John");  // f is an object
+document.getElementById("demo3").innerHTML = (x==y);
+
+//(x === y) true or false?
+let g = new String("John");  // x is an object
+let h = new String("John");  // y is an object
+document.getElementById("demo4").innerHTML = (x===y);
+
+
+</script>
+
+</body>
+</html>

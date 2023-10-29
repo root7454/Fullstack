@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sortable Student Data Table with jQuery</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <table id="student-table">
+        <thead>
+            <tr>
+                <th data-column="name">Student Name</th>
+                <th data-column="roll">Roll Number</th>
+                <th data-column="date">Admission Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>John Smith</td>
+                <td>101</td>
+                <td>2023-08-15</td>
+            </tr>
+            <tr>
+                <td>Alice Johnson</td>
+                <td>102</td>
+                <td>2024-08-12</td>
+            </tr>
+            <tr>
+                <td>Bob Williams</td>
+                <td>103</td>
+                <td>2023-08-18</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script>
+        $(document).ready(function() {
+            $("#student-table th").click(function() {
+                const columnIndex = $(this).index();
+                const columnType = $(this).data("column");
+
+                const rows = $("#student-table tbody tr").get();
+
+                rows.sort(function(a, b) {
+                    const aValue = $(a).find("td").eq(columnIndex).text();
+                    const bValue = $(b).find("td").eq(columnIndex).text();
+
+                    if (columnType === "name") {
+                        return aValue.localeCompare(bValue);
+                    } else if (columnType === "roll" || columnType === "date") {
+                        return aValue.localeCompare(bValue, undefined, { numeric: true });
+                    }
+                });
+
+                $("#student-table tbody").empty().append(rows);
+            });
+        });
+    </script>
+</body>
+</html>

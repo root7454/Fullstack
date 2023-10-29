@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                $('ul').click(function(){
+                    $('li#a').slideToggle(500);
+                });
+            });
+                
+        </script>
+    </head>
+    <style>
+        body{
+            margin: 0;
+        }
+        ul{
+            background-color: blanchedalmond;
+            margin: 0;
+        }
+        li#a,#b,#c{
+            display:none;
+            list-style-type: none;
+            width: 100%;
+            text-align: center;
+            padding: 10px;
+           
+        }
+        #active{
+            text-align: center;
+            padding: 10px;
+            color: white;
+            background-color: rgb(43, 21, 21);
+        }
+    </style>
+    <body>
+        <ul>
+            <li id="active">Home</li>
+            <li id="a">About</li>
+            <li id="a">Contact</li>
+            <li id="a">Account</li>
+        </ul>
+    </body>
+</html>

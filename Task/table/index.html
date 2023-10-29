@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="container">
+            <h1 class="mb-4">Student Listing</h1>
+            <table class="table user-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Username</th>
+                        <th>Website</th>
+                    </tr>
+                </thead>
+                <tbody id="randomRecord">
+                    <tr class="d-none loader-row">
+                        <td colspan="3">
+                            <i class="fa fa-spin fa-sync-alt fa-2x"></i>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div id="pagi" class="pagination m-2">
+                <li  class="page-item"></li>
+                
+            </div>
+            <button class="btn btn-primary" id="getRandom">Get Data</button>
+            <button class="btn btn-dark" id="toggleDarkMode">Toggle Dark Mode</button>
+        </div>
+    </div>
+
+    <script>
+        var isDarkMode = false;
+        const recordsPerPage = 2; // Number of records to show per page
+        let currentPage = 1;
+
+        $(document).ready(function () {
+            $("#getRandom").click(function () {
+                $(".loader-row").removeClass("d-none");
+                $.getJSON("https://jsonplaceholder.typicode.com/users", function (data) {
+
+                    const startIndex = (currentPage - 1) * recordsPerPage;
+                    const endIndex = startIndex + recordsPerPage;
+
+                    const randomIndices = generateRandomIndices(data, startIndex, endIndex);
+
+                    displayRandomRecords(data, randomIndices);
+                    renderPagination(data.length);
+                })
+                    .fail(function () {
+                        
+                        $("#randomRecord").html("<tr><td colspan='3'>Error fetching data.</td></tr>");
+                    });
+
+            });
+
+
+        });
+
+
+        function generateRandomIndices(data, startIndex, endIndex) {
+            const randomIndices = [];
+
+            while (randomIndices.length < recordsPerPage) {
+                const randomIndex = Math.floor(Math.random() * data.length);
+                if (!randomIndices.includes(randomIndex) && randomIndex >= startIndex && randomIndex < endIndex) {
+                    randomIndices.push(randomIndex);
+                }
+            }
+
+            return randomIndices;
+        }
+
+        function displayRandomRecords(data, randomIndices) {
+            const randomRecordsHtml = randomIndices.map(index => `
+                <tr>
+                    <td>${data[index].id}</td>
+                    <td>${data[index].name}</td>
+                    <td>${data[index].email}</td>
+                    <td>${data[index].phone}</td>
+                    <td>${data[index].username}</td>
+                    <td>${data[index].website}</td>
+                </tr>
+            `);
+
+            $("#randomRecord").html(randomRecordsHtml);
+        }
+        $("#toggleDarkMode").click(function () {
+            isDarkMode = !isDarkMode;
+            if (isDarkMode) {
+                $("body").css({
+                    "background-color": "#444",
+                    "color": "#fff"
+                });
+            } else {
+                $("body").css({
+                    "background-color": "#fff",
+                    "color": "#000"
+                });
+            }
+        });
+
+        function renderPagination(totalRecords) {
+            const totalPages = Math.ceil(totalRecords / recordsPerPage);
+            const paginationContainer = $("#pagi");
+            paginationContainer.empty();
+
+            for (let i = 1; i <= totalPages; i++) {
+                const pageLink = $("<a>", { href: "#" });
+                pageLink.text(i);
+                pageLink.addClass("page-link ");
+             
+                pageLink.on("click", function () {
+                    currentPage = i;
+                    $("#randomRecord").empty();
+                    $("#getRandom").click();
+                });
+                paginationContainer.append(pageLink);
+            }
+        }
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://www.gstatic.com/firebasejs/6.6.1/firebase-app.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- include firebase database -->
+    <script src="https://www.gstatic.com/firebasejs/6.6.1/firebase-database.js"></script>
+</head>
+
+<body style="background-color: #CDC4F9;">
+    <section>
+        <div class="container py-5">
+
+
+                    <div class="card" id="chat3" style="border-radius: 15px;">
+                        <div class="card-body">
+
+                            <div class="pt-3 pe-3" data-mdb-perfect-scrollbar="true" id="bodyid"
+                                style="position: relative; height: 400px">
+
+                            </div>
+
+                            <div class="input-group">
+                                    <input  type="text" class="form-control form-control-lg" id="message"
+                                    placeholder="Type message">
+                                    <a class="text-center p-5"><i id="submit" style="cursor: pointer;" class="fa fa-paper-plane fa-lg"
+                                        aria-hidden="true"></i></a>
+                            </div>
+                            
+                </div>
+            </div>
+
+        </div>
+    </section>
+</body>
+<style>
+    #chat3 .form-control {
+        border-color: transparent;
+    }
+
+    #chat3 .form-control:focus {
+        border-color: transparent;
+        box-shadow: inset 0px 0px 0px 1px transparent;
+    }
+
+    .badge-dot {
+        border-radius: 50%;
+        height: 10px;
+        width: 10px;
+        margin-left: 2.9rem;
+        margin-top: -.75rem;
+    }
+</style>
+
+
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.3.1/firebase-app.js";
+    import { getDatabase, set, ref, push, child, onValue, onChildAdded } from "https://www.gstatic.com/firebasejs/10.3.1/firebase-database.js";
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+        apiKey: "AIzaSyDUanRrQam0kg6tzrLbqiFVO_xZ31Tuu9A",
+        authDomain: "chating-app-70349.firebaseapp.com",
+        databaseURL: "https://chating-app-70349-default-rtdb.firebaseio.com",
+        projectId: "chating-app-70349",
+        storageBucket: "chating-app-70349.appspot.com",
+        messagingSenderId: "61684900937",
+        appId: "1:61684900937:web:25b0ae40dc63c7ed5f0b98",
+    };
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const database = getDatabase(app);
+    var myName = prompt('Enter Your name');
+
+
+    submit.addEventListener('click', (e) => {
+        var msg = document.getElementById('message').value;
+        var name = myName;
+        var timestamp = new Date().toLocaleString();
+
+
+        const id = push(child(ref(database), 'messages')).key;
+
+        set(ref(database, 'messages/' + id), {
+            name: name,
+            message: msg,
+            dateandtime: timestamp
+
+        });
+        document.getElementById('message').value = "";
+        alert('data was sent to firebase')
+    });
+    const newMsg = ref(database, 'messages/');
+    onChildAdded(newMsg, (data) => {
+        if (data.val().name != myName) {
+            var divdata = `<div class="d-flex flex-row justify-content-start">
+                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava6-bg.webp" alt="avatar 1" style="width: 45px; height: 100%;">
+                <div>
+                    <p class="small p-2 ms-3 mb-1 rounded-3" style="background-color: #f5f6f7;">`
+            divdata += data.val().message;
+            divdata += `</p>
+            <p class="small ms-3 mb-3 rounded-3 text-muted float-end">`
+            divdata += data.val().dateandtime;
+            divdata += `</p>
+        </div>
+    </div>`
+
+            var container = document.getElementById('bodyid');
+
+            container.insertAdjacentHTML('beforebegin', divdata);
+
+        } else {
+            var divdata = `<div class="d-flex flex-row justify-content-end">
+                <div>
+                    <p class="small p-2 me-3 mb-1 text-white rounded-3 bg-primary" id="messages1">`
+            divdata += data.val().message;
+            divdata += `</p>
+                    <p class="small me-3 mb-3 rounded-3 text-muted">`
+
+            divdata += data.val().dateandtime;
+
+            divdata += `</p>
+                </div>
+                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1-bg.webp"
+                    alt="avatar 1" style="width: 45px; height: 100%;">
+            </div>`
+
+            var container = document.getElementById('bodyid');
+
+            container.insertAdjacentHTML('beforebegin', divdata);
+        }
+    });
+
+</script>
+
+</html>

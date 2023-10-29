@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+table, td, th {
+  border: 1px solid black;
+  padding: 15px;
+  margin: 10px;
+}
+
+table {
+  width: 100%;
+}
+th {
+    height: 50px;
+    font-weight: bolder;
+    font-size: larger;
+}
+
+#tb1 th, #tb1 td {
+  text-align: center;
+  border-style: double;
+}
+
+#tb2 th, #tb2 td {
+  text-align: left;
+  border-style: hidden;
+}
+
+#tb3 th, #tb3 td {
+  height: 35px;
+  vertical-align: bottom;
+  border-style: dashed;
+}
+
+#tb1 tr:nth-child(even){
+    background-color: burlywood;
+}
+
+#tb2 tr:nth-child(even){
+    background-color: rgb(212, 131, 24);
+}
+
+#tb3 tr:nth-child(even){
+    background-color: rgb(161, 98, 10);
+}
+
+#tb1 tr:hover {
+    background-color: rgb(228, 148, 164);
+}
+
+#tb2 tr:hover {
+    background-color: rgb(224, 94, 120);
+}
+
+#tb3 tr:hover {
+    background-color: rgb(178, 35, 64);
+}
+
+</style>
+</head>
+<body>
+
+<h2>The text-align Property</h2>
+
+<p>This property sets the horizontal alignment (like left, right, or center) of the content in th or td.</p>
+
+<table id="tb1">
+  <tr>
+    <th>Firstname</th>
+    <th>Lastname</th>
+    <th>Savings</th>
+  </tr>
+  <tr>
+    <td>Peter</td>
+    <td>Griffin</td>
+    <td>$100</td>
+  </tr>
+  <tr>
+    <td>Lois</td>
+    <td>Griffin</td>
+    <td>$150</td>
+  </tr>
+  <tr>
+    <td>Joe</td>
+    <td>Swanson</td>
+    <td>$300</td>
+  </tr>
+  <tr>
+    <td>Cleveland</td>
+    <td>Brown</td>
+    <td>$250</td>
+  </tr>
+</table>
+
+<table id="tb2">
+    <tr>
+      <th>Firstname</th>
+      <th>Lastname</th>
+      <th>Savings</th>
+    </tr>
+    <tr>
+      <td>Peter</td>
+      <td>Griffin</td>
+      <td>$100</td>
+    </tr>
+    <tr>
+      <td>Lois</td>
+      <td>Griffin</td>
+      <td>$150</td>
+    </tr>
+    <tr>
+      <td>Joe</td>
+      <td>Swanson</td>
+      <td>$300</td>
+    </tr>
+    <tr>
+      <td>Cleveland</td>
+      <td>Brown</td>
+      <td>$250</td>
+    </tr>
+  </table>
+
+  <table id="tb3">
+    <tr>
+      <th>Firstname</th>
+      <th>Lastname</th>
+      <th>Savings</th>
+    </tr>
+    <tr>
+      <td>Peter</td>
+      <td>Griffin</td>
+      <td>$100</td>
+    </tr>
+    <tr>
+      <td>Lois</td>
+      <td>Griffin</td>
+      <td>$150</td>
+    </tr>
+    <tr>
+      <td>Joe</td>
+      <td>Swanson</td>
+      <td>$300</td>
+    </tr>
+    <tr>
+      <td>Cleveland</td>
+      <td>Brown</td>
+      <td>$250</td>
+    </tr>
+  </table>
+
+</body>
+</html>

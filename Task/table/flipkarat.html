@@ -1,0 +1,60 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+</head>
+
+<body>
+
+    <div class="container mt-5">
+        <form class="form-inline">
+            <div class="input-group">
+                <input id="inputurl" type="text" class="form-control" placeholder="Search...">
+                <div class="input-group-append">
+                    <button id="btn" class="btn btn-primary" type="submit">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </div>
+        </form>
+        <div id="imagesContainer"></div>
+    </div>
+</body>
+<script>
+    $(document).ready(function () {
+
+        $('#btn').click(function () {
+            var InputLink = $("#inputurl").val();
+
+            $.ajax({
+                url: InputLink,
+                method: 'GET',
+
+
+                success: function (response) {
+                    var imagetagurl = [];
+                    $(response).find('.q6DClP').each(function () {
+
+                        var imgurl = $(this).attr('src');
+
+                        if (imgurl) {
+                            imagetagurl.push(imgurl);
+                        }
+                    });
+
+                    var imagesContainer = $('#imagesContainer');
+                    imagetagurl.forEach(function(imgurl) {
+                        imagesContainer.append('<img src="' + imageUrl + '">');
+                    });
+                }
+            });
+        });
+    });
+</script>
+
+</html>

@@ -1,0 +1,28 @@
+
+<h2>JavaScript Comparisons</h2>
+
+<p>Input your age and click the button:</p>
+
+<input id="age" value="18" />
+
+<button onclick="myFunction()">Try it</button>
+
+<p id="demo"></p>
+
+<script>
+
+function myFunction(){
+let vot;
+let age = Number(document.getElementById('age').value);
+
+if (isNaN(age)){
+	vot = "Input is not number";
+}
+else{
+	vot = (age < 18) ? "it is ok" : "it is not ok";
+}
+
+document.getElementById('demo').innerHTML = vot;
+
+}
+
